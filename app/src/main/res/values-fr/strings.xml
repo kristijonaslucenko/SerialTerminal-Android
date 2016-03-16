@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Paramètres</string>
+    <string name="add">Ajouter</string>
+    <string name="addLB">Ajouter un LinkBus</string>
+    <string name="apply">Appliquer</string>
+    <string name="bt_enable">Activation du Bluetooth...</string>
+    <string name="bt_not_found">Bluetooth incompatible</string>
+    <string name="cancel">Annuler</string>
+    <string name="clear">Effacer</string>
+    <string name="connect">Connecter</string>
+    <string name="device_not_found">Appareil non trouvé, veuillez vérifier votre connection...</string>
+    <string name="disconnect">Déconnecter</string>
+    <string name="disconnected">Déconnecté</string>
+    <string name="enable">Activer</string>
+    <string name="enable_root_only">Activer (root only)</string>
+    <string name="errorIPInvalid">Cette adresse IP est invalide...</string>
+    <string name="errorNameExists">Ce nom existe déjà...</string>
+    <string name="errorNameInvalid">Ce nom est invalide...</string>
+    <string name="errorScan">Le scan a échoué...</string>
+    <string name="errorUnknown">Une erreur inconnu s\'est produite...</string>
+    <string name="ok">OK</string>
+    <string name="okScan">Scan réussi...</string>
+    <string name="options">Options</string>
+    <string name="port_selected_none">Aucun port sélectionné</string>
+    <string name="port_show">Port : </string>
+    <string name="profil_name">Nom de profil</string>
+    <string name="receive">Réception</string>
+    <string name="scan_lb_unit_code">Scanner le QRCode au dessous du LinkBus</string>
+    <string name="see_devmel_url">\nVoir http://www.devmel.com/linkbus\n</string>
+    <string name="selectLB">Sélectionner un LinkBus</string>
+    <string name="send">Envoyer</string>
+    <string name="status">Statut</string>
+    <string name="title_activity_linkbus_add">Ajout d\'une connection LinkBus</string>
+    <string name="title_activity_port_select">Sélection d\'un port</string>
+    <string name="title_activity_serial_options">Options du port série</string>
+    <string name="transmit">Transmission</string>
+    <string name="usb_otg_enable">Activer l\'USB OTG (redémarrage requis)...</string>
+</resources>

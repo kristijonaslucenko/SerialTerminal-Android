@@ -1,0 +1,170 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/baud_rate"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/baudRateValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="115200" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/databits"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+ 	    <RadioGroup
+	        android:id="@+id/dataBitsValue"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal">
+	            <RadioButton
+	                android:id="@+id/dataBits5"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="5" />
+	
+	            <RadioButton
+	                android:id="@+id/dataBits6"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="6" />
+	
+	            <RadioButton
+	                android:id="@+id/dataBits7"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="7" />
+	
+	            <RadioButton
+	                android:id="@+id/dataBits8"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="8" />
+	
+		</RadioGroup>
+        
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stopbits"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+ 		    <RadioGroup
+		        android:id="@+id/stopBitsValue"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal">
+
+	            <RadioButton
+	                android:id="@+id/stopBits1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="1" />
+	
+	            <RadioButton
+	                android:id="@+id/stopBits2"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="2" />
+	 
+			</RadioGroup>
+        
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/parity"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+		    <RadioGroup
+		        android:id="@+id/parityValue"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal">
+
+	            <RadioButton
+	                android:id="@+id/parityNone"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/none" />
+	
+	            <RadioButton
+	                android:id="@+id/parityOdd"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/odd" />
+	
+	            <RadioButton
+	                android:id="@+id/parityEven"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/even" />
+			</RadioGroup>
+        
+        
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reset"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        
+        <ToggleButton
+            android:id="@+id/resetValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+       
+		<CheckBox
+             android:id="@+id/resetPulseValue"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/toggle_pulse" />
+    </LinearLayout>
+    
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vtg"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ToggleButton
+            android:id="@+id/vtgValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>
