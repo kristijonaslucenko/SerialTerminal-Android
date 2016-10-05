@@ -89,6 +89,14 @@ public class MainActivity extends Activity {
                 sendClick();
             }
         });
+
+        final Button initBt = (Button) findViewById(R.id.initBt);
+        initBt.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                initAT();
+            }
+        });
+
         checkCR = (CheckBox) findViewById(R.id.checkCR);
         checkCR.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -251,6 +259,32 @@ public class MainActivity extends Activity {
         receiveText.setText("");
         transmitText.setText("");
     }
+    private void initAT(){
+        if(device!=null && device.isOpen()==true){
+            final String[] initArr = new String[]{"atsp6\r","ate0\r", "ath1\r", "atcra 408\r", "atcaf0\r", "atS0\r", "atma\r"};
+
+
+            Runnable conRun = new Runnable(){
+                public void run() {
+                    try {
+                        for(int i=0 ; i < 7 ; i++) {
+                            String textInput = initArr[i];
+
+                            OutputStream out = device.getOutputStream();
+                            out.write(textInput.getBytes());
+                            out.flush();
+                            textSent(textInput);
+                        }
+                    } catch (Exception e) {
+                        disconnect();
+//						e.printStackTrace();
+                    }
+                }
+            };
+            new Thread(conRun).start();
+            }
+        }
+
     private void sendClick(){
         if(device!=null && device.isOpen()==true){
             Runnable conRun = new Runnable(){

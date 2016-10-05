@@ -122,4 +122,12 @@
         android:layout_toRightOf="@+id/connectBt"
         android:text="@string/options" />
 
+    <Button
+        android:id="@+id/initBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AT Init"
+        android:layout_alignTop="@+id/clearBt"
+        android:layout_toLeftOf="@+id/clearBt" />
+
 </RelativeLayout>
