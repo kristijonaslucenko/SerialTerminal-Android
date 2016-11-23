@@ -11,29 +11,29 @@ public class OBD_filter extends Activity {
 
     private static String[] packet;
     private static String[] PIDs;
-    public static String VIN;
-    public static double SOC;
-    public static double EVP;
-    public static int velocity;
-    public static int odo;
-    public static int chargeVoltage;
-    public static String onBoardCharger;
-    public static String quickCharge;
-    public static String shiftStatus;
-    public static int heatingLevel;
-    public static String heatingStatus;
-    public static String acStatus;
-    public static String MaxHeating;
-    public static String airCirculation;
-    public static int ventilationLevel;
-    public static String brakeOnOff;
-    public static int brakePedalValue;
-    public static String positionLightsStatus;
-    public static String highBeamStatus;
-    public static String tailLightsStatus;
-    public static String lowBeamStatus;
-    public static int steeringWheelPosition;
-    public static String throttleStatus;
+    private static String VIN;
+    private static double SOC;
+    private static double EVP;
+    private static int velocity;
+    private static int odo;
+    private static int chargeVoltage;
+    private static String onBoardCharger;
+    private static String quickCharge;
+    private static String shiftStatus;
+    private static int heatingLevel;
+    private static String heatingStatus;
+    private static String acStatus;
+    private static String MaxHeating;
+    private static String airCirculation;
+    private static int ventilationLevel;
+    private static String brakeOnOff;
+    private static int brakePedalValue;
+    private static String positionLightsStatus;
+    private static String highBeamStatus;
+    private static String tailLightsStatus;
+    private static String lowBeamStatus;
+    private static int steeringWheelPosition;
+    private static String throttleStatus;
 
     public static void main(String[] args) {
 
@@ -52,7 +52,7 @@ public class OBD_filter extends Activity {
         int pidNo = 0;
         //System.out.println(text.length());
         //make sure it's not an ACK
-        if (text.length() >= 19) {
+        if (text.length() >= 18) {
             pid = text.substring(0, 3);
             packet[0] = text.substring(3, 5);   //D0
             packet[1] = text.substring(5, 7);   //D1
@@ -61,7 +61,7 @@ public class OBD_filter extends Activity {
             packet[4] = text.substring(11, 13); //D4
             packet[5] = text.substring(13, 15); //D5
             packet[6] = text.substring(15, 17); //D6
-            packet[7] = text.substring(17, 19); //D7
+            //packet[7] = text.substring(17, 19); //D7
 
             for (int i = 0; i < PIDs.length; i++) {
                 if (PIDs[i].equals(pid)) {
@@ -365,5 +365,29 @@ public class OBD_filter extends Activity {
 
     private static void calculateThrottle(String[] packet) {
         throttleStatus = "NA";
+    }
+
+    public static int getVelocity() {
+        return velocity;
+    }
+
+    public static int getOdo() {
+        return odo;
+    }
+
+    public static double getEVP() {
+        return EVP;
+    }
+
+    public static double getSOC() {
+        return SOC;
+    }
+
+    public static String getShiftStatus() {
+        return shiftStatus;
+    }
+
+    public static String getBrakeOnOff() {
+        return brakeOnOff;
     }
 }
