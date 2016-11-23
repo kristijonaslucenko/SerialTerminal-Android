@@ -22,7 +22,7 @@ public class SerialOptions extends Activity {
 	private CheckBox resetPulseValue;
 	private ToggleButton vtgValue;
 
-	private final static int defaultBaudrate = 500000;
+	private final static int defaultBaudrate = 1000000;
 	private final static int defaultDatabits = 8;
 	private final static int defaultStopbits = 1;
 	private final static int defaultParity = 0;

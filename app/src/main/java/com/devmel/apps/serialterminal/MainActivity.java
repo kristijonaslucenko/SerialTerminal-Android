@@ -3,6 +3,7 @@ package com.devmel.apps.serialterminal;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Timer;
 
 import com.devmel.communication.IUart;
 import com.devmel.communication.linkbus.Usart;
@@ -109,7 +110,9 @@ public class MainActivity extends Activity {
                 lfClick();
             }
         });
-
+        OBD_filter filterOBD = new OBD_filter();
+        OBD_filter.PIDsArray();
+        Timer timer = new Timer();
 
     }
 
@@ -259,15 +262,19 @@ public class MainActivity extends Activity {
         receiveText.setText("");
         transmitText.setText("");
     }
+
+    private void test(){
+        transmitText.setText("stuff");
+    }
     private void initAT(){
         if(device!=null && device.isOpen()==true){
-            final String[] initArr = new String[]{"atsp6\r","ate0\r", "ath1\r", "atcra 408\r", "atcaf0\r", "atS0\r", "atma\r"};
+            final String[] initArr = new String[]{"atsp6\r","ate0\r", "ath1\r", "atcaf0\r", "atS0\r", "atma\r"};
 
 
             Runnable conRun = new Runnable(){
                 public void run() {
                     try {
-                        for(int i=0 ; i < 7 ; i++) {
+                        for(int i=0 ; i < initArr.length ; i++) {
                             String textInput = initArr[i];
 
                             OutputStream out = device.getOutputStream();
@@ -332,19 +339,28 @@ public class MainActivity extends Activity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                receiveText.setText(receiveText.getText().toString()+text);
-                rxBytes += text.length();
-                updateTrafficStatus();
+                //receiveText.setText(receiveText.getText().toString()+text);
+                OBD_filter.packetReceived(text);
+                //rxBytes += text.length();
+                receiveText.setText("EVP: " + Double.toString(OBD_filter.EVP) + "W\n" + "SOC: " +
+                        Double.toString(OBD_filter.SOC) + "%\n" + "Velocity:" + OBD_filter.velocity +
+                        "km/h\n" + "Odometer: " + OBD_filter.odo + "km\n" + "Shift status: " + OBD_filter.shiftStatus + "\n"
+                        + "Brake lamp: " + OBD_filter.brakeOnOff + "\n");
+                /* + "Pos. Lights: " + OBD_filter.positionLightsStatus + "\n"
+                + "TailLights: " + OBD_filter.tailLightsStatus + "\n" + "High beam: " + OBD_filter.highBeamStatus + "\n"
+                        + "Low beam: " + OBD_filter.lowBeamStatus + "\n"*/
+                //updateTrafficStatus();
             }
         });
     }
 
     private void updateTrafficStatus(){
-        String text = "RX : "+this.rxBytes+"  ;  TX : "+this.txBytes;
+        /*String text = "RX : "+this.rx Bytes+"  ;  TX : "+this.txBytes;
         if(err > 0){
             text += " ; ERR : "+err;
-        }
-        statusText.setText(text);
+        }*/
+
+        //statusText.setText(Double.toString(OBD_filter.EVP));
     }
 
     private void connectError(final String message){
@@ -402,7 +418,7 @@ public class MainActivity extends Activity {
                                     try {
                                         int available = inStream.available();
                                         if(available>0){
-                                            byte[] buffer = new byte[1024];
+                                            byte[] buffer = new byte[4096];
                                             int toRead = inStream.read(buffer,0,available);
                                             if(toRead>0){
                                                 textReceived(new String(buffer,0,toRead));
